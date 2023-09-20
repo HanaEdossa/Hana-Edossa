@@ -1,0 +1,45 @@
+
+---
+# libraries to load
+
+library(nycflights13)
+library(ggplot2)
+library(dplyr)
+
+# Create a histogram for the "distance" variable
+ggplot(flights, aes(x = distance)) +
+  geom_histogram(binwidth = 50, fill = "skyblue", color = "black") +
+  labs(
+    title = "Distribution of Flight Distances",
+    x = "Distance (miles)",
+    y = "Frequency"
+  ) +
+  scale_y_continuous(labels = scales::comma)
+
+# Create a histogram for the "air_time" variable
+ggplot(flights, aes(x = air_time)) +
+  geom_histogram(binwidth = 10, fill = "lightgreen", color = "black") +
+  labs(
+    title = "Distribution of Air Times",
+    x = "Air Time (minutes)",
+    y = "Frequency"
+  ) +
+  scale_y_continuous(labels = scales::comma)
+  
+# Create a scatter plot of distance vs. air_time (second bulit point)
+ggplot(flights, aes(x = distance, y = air_time)) +
+  geom_point(color = "blue", alpha = 0.5) +
+  labs(
+    title = "Scatter Plot of Distance vs. Air Time",
+    x = "Distance (miles)",
+    y = "Air Time (minutes)"
+  )
+
+---
+
+# Summaries
+```
+The univariate histograms created above visualize the distribution of two key variables: "distance" and "air_time" from the "nycflights13" dataset. I used ggplot2 to produce these plots,it allowed to easily see the patterns within each variable. It provided a clear representation of how frequently different values or intervals occurred. Notably, for the "distance" variable, the data appeared right-skewed, with a higher frequency of shorter flight distances, while the "air_time" variable showed a relatively symmetric distribution with a peak around a specific airtime duration. These insights gave us a sense of the data's characteristics.
+
+Afterwards, I created a bivariate scatter plot to explore the relationship between these two varibles; "distance" and "air_time." This plot illustrated how airtime changes concerning flight distance. Interestingly, I observed a positive correlation between these variables; as flight distance increased, so did airtime. The use of transparency in the scatter plot allowed me to identify denser regions and perceive concentration trends in the data.
+```
